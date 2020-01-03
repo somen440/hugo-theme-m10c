@@ -30,6 +30,11 @@
       {{ block "main" . }}
         {{ .Content }}
       {{ end }}
+
+      <h3>タグ</h3>
+        {{ range .Site.Taxonomies.tags.ByCount }}
+        ・<a href="{{ $.Site.BaseURL | relURL }}tags/{{ .Name | urlize }}">{{ .Name }}<span>({{ .Count }})</span></a>
+        {{ end }}
     </main>
   </body>
 </html>
